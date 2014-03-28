@@ -1,0 +1,31 @@
+h1, p {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+header,
+section {
+  color: #fff;
+  height: 100px;
+}
+
+header {
+  background-color: #cb3b29;
+}
+
+.blue {
+  background-color: #1c96d7;
+}
+
+.green {
+  background-color: #5ab15d;
+}
+
+.yellow {
+  background-color: #f7cf33;
+  color: #000;
+}
