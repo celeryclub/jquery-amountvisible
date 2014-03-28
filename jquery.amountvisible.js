@@ -8,21 +8,34 @@ http://stephendavis89.mit-license.org
 (function($) {
   $.fn.amountVisible = function() {
     var $this = this.first(),
-        viewportHeight = $(window).height(),
         topmostVisibleYIndex = $(window).scrollTop(),
-        bottommostVisibleYIndex = topmostVisibleYIndex + viewportHeight,
+        bottommostVisibleYIndex = topmostVisibleYIndex + $(window).height(),
         elTopYIndex = $this.offset().top,
         elHeight = $this.outerHeight(),
-        elBottomYIndex = elTopYIndex + elHeight,
-        elAmountHangingOffTop = Math.max(0, topmostVisibleYIndex - elTopYIndex),
-        elAmountHangingOffBottom = Math.max(0, elBottomYIndex - bottommostVisibleYIndex);
+        elBottomYIndex = elTopYIndex + elHeight;
 
     if (elTopYIndex >= topmostVisibleYIndex && elBottomYIndex <= bottommostVisibleYIndex) {
-      // Fully within viewport
+      /*
+      Element is fully within viewport
+      Returns element height
+      */
+
       return elHeight;
     } else {
-      // Partially within viewport
-      return Math.max(0, elHeight - elAmountHangingOffTop - elAmountHangingOffBottom);
+      /*
+      Element is partially within viewport
+      Returns the greater of 0 or the following:
+
+      element height -
+      amount above top of viewport -
+      amount below bottom of viewport
+      */
+
+      return Math.max(0,
+        elHeight -
+        Math.max(0, topmostVisibleYIndex - elTopYIndex) -
+        Math.max(0, elBottomYIndex - bottommostVisibleYIndex)
+      );
     }
   };
 }(jQuery));
