@@ -22,7 +22,7 @@ http://stephendavis89.mit-license.org
       return elHeight;
     } else {
       // Partially within viewport
-      return elHeight - elAmountHangingOffTop - elAmountHangingOffBottom;
+      return Math.max(0, elHeight - elAmountHangingOffTop - elAmountHangingOffBottom);
     }
   };
 }(jQuery));
