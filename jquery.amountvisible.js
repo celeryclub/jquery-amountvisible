@@ -1,6 +1,8 @@
 /*
 jQuery AmountVisible - v0.5
 Copyright (c) 2011-2014 Stephen Davis
+https://github.com/stephendavis89/jquery-amountvisible
+
 Licensed under the MIT license
 http://stephendavis89.mit-license.org
 */
