@@ -8,12 +8,11 @@ http://stephendavis89.mit-license.org
 */
 
 (function($) {
-  $.fn.amountVisible = function() {
-    var $this = this.first(),
-        topmostVisibleYIndex = $(window).scrollTop(),
+  var calculateAmountVisible = function($el) {
+    var topmostVisibleYIndex = $(window).scrollTop(),
         bottommostVisibleYIndex = topmostVisibleYIndex + $(window).height(),
-        elTopYIndex = $this.offset().top,
-        elHeight = $this.outerHeight(),
+        elTopYIndex = $el.offset().top,
+        elHeight = $el.outerHeight(),
         elBottomYIndex = elTopYIndex + elHeight;
 
     if (elTopYIndex >= topmostVisibleYIndex && elBottomYIndex <= bottommostVisibleYIndex) {
@@ -39,5 +38,9 @@ http://stephendavis89.mit-license.org
         Math.max(0, elBottomYIndex - bottommostVisibleYIndex)
       );
     }
+  };
+
+  $.fn.amountVisible = function() {
+    return calculateAmountVisible(this.first());
   };
 }(jQuery));
